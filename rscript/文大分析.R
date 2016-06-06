@@ -193,9 +193,9 @@ if(T){
     tmp = rbind(tmp,c('Á`­p',sum(tmp[,2]),1))
     #ifelse(i==1,write.table(tmp, filename, col.names=TRUE, sep=","),write.table(tmp, filename, col.names=TRUE, sep=",",append=T))
     if(i==1){
-      write.table(tmp, filename, col.names=TRUE, row.names=F, sep=",")
+      write.table(tmp, paste0('output\\',filename), col.names=TRUE, row.names=F, sep=",")
     }else{
-      write.table(tmp, filename, col.names=TRUE, row.names=F, sep=",",append=T)
+      write.table(tmp, paste0('output\\',filename), col.names=TRUE, row.names=F, sep=",",append=T)
     }
   }
   
@@ -329,9 +329,9 @@ if(T){
         
         #ifelse(i==1,write.table(tmp, filename, col.names=TRUE, sep=","),write.table(tmp, filename, col.names=TRUE, sep=",",append=T))
         if(i==1){
-          write.table(tmp, filename, col.names=TRUE, row.names=F, sep=",")
+          write.table(tmp, paste0('output\\',filename), col.names=TRUE, row.names=F, sep=",")
         }else{
-          write.table(tmp, filename, col.names=TRUE, row.names=F, sep=",",append=T)
+          write.table(tmp, paste0('output\\',filename), col.names=TRUE, row.names=F, sep=",",append=T)
         }
       }
     }
