@@ -3,6 +3,13 @@ gc() #記憶體釋放
 path<-"D:\\abc\\wjhong\\projects\\wenda_ana"
 setwd(path)
 
+##
+##colname有 '複選' 就會用複選方式處理
+##交叉分析則輸入要交叉的背景col號碼
+##繪圖都以長條圖為主
+##
+
+
 trim <-function(x){
   gsub("^\\(+|\\)+$", "", x)
 }
@@ -190,7 +197,7 @@ if(T){
     tmp = tmp[order(as.numeric(rownames(tmp))),]
     ##
     tmp[,1] <- unlist(lapply(tmp[,1], as.character))
-    tmp = rbind(tmp,c('總計',sum(tmp[,2]),1))
+    tmp = rbind(tmp,c('總計',sum(tmp[,2]),sum(tmp[,3])))
     #ifelse(i==1,write.table(tmp, filename, col.names=TRUE, sep=","),write.table(tmp, filename, col.names=TRUE, sep=",",append=T))
     if(i==1){
       write.table(tmp, paste0('output\\',filename), col.names=TRUE, row.names=F, sep=",")
@@ -323,7 +330,7 @@ if(T){
         ##
         for(tmp_div_n in 1:length(unique(tmp[,1]))){
           # tmp[tmp_div,4] = tmp[tmp_div,3]/sum(tmp[which(tmp[,1]==tmp[tmp_div,1]),3])
-          tmp = rbind(tmp,c(unique(tmp[,1])[tmp_div_n],'總計',sum(as.numeric(tmp[which(tmp[,1]==unique(tmp[,1])[tmp_div_n]),3])),1))
+          tmp = rbind(tmp,c(unique(tmp[,1])[tmp_div_n],'總計',sum(as.numeric(tmp[which(tmp[,1]==unique(tmp[,1])[tmp_div_n]),3])),sum(as.numeric(tmp[which(tmp[,1]==unique(tmp[,1])[tmp_div_n]),4]))))
         }
         tmp = tmp[order(tmp[,1]),]
         
