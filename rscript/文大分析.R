@@ -23,6 +23,7 @@ roundUpNice <- function(x, nice=c(1,2,4,5,6,8,10)) {
 filename='文大畢業流向調查分析結果.csv'
 people = read.csv('103學年度執行畢業生流向調查-data.csv',stringsAsFactors=F)
 
+##尺度不統一
 ##unique(unlist(c(people[,20:38])))
 for(i in 20:38){
   people[which(grepl('非常',people[,i])),i] = '非常重要(5分)'
